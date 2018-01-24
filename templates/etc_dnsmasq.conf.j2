@@ -52,7 +52,11 @@ dhcp-option=option:router,{{ dnsmasq_option_router }}
 {% if dnsmasq_upstream_servers is defined %}
 {% if dnsmasq_upstream_servers is iterable %}
 {% for host in dnsmasq_upstream_servers %}
+{% if host.domain is defined %}
+server=/{{ host.domain }}/{{ host.server }}
+{% else %}
 server={{ host }}
+{% endif %}
 {% endfor %}
 {% else %}
 server={{ dnsmasq_upstream_servers }}
