@@ -35,7 +35,7 @@ None of the variables below are required.
 
 ### DNS settings
 
-One or more upstream DNS servers can can be specified with the variable `dnsmasq_server`, e.g.:
+One or more upstream DNS servers can can be specified with the variable `dnsmasq_servers`. To specify a specific upstream server for a certain domain, use the `domain` & `server` attributes., e.g.:
 
 ```Yaml
     dnsmasq_upstream_servers: ns1.example.com
@@ -43,6 +43,12 @@ One or more upstream DNS servers can can be specified with the variable `dnsmasq
     dnsmasq_upstream_servers:
       - 8.8.4.4
       - 8.8.8.8
+  OR
+    dnsmasq_upstream_servers:
+      - domain: internal.lan
+        server: 8.8.8.8
+      - domain: external.com
+        server: 8.8.4.4
 ```
 
 SRV records (see [dnsmasq(8)](http://linux.die.net/man/8/dnsmasq) or [RFC 2782](https://www.ietf.org/rfc/rfc2782.txt)) can be specified with `dnsmasq_srv_hosts`, e.g.:
@@ -154,3 +160,4 @@ Licensed under the 2-clause "Simplified BSD License". See [LICENSE.md](/LICENSE.
 - [Chris James](https://github.com/etcet)
 - [David Wittman](https://github.com/DavidWittman)
 - [Niklas Juslin](https://github.com/JZfi)
+- [Pim Lefevere](https://github.com/PimLef)
